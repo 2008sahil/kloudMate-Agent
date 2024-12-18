@@ -1,0 +1,19 @@
+exporters:
+  debug/5:
+    verbosity: detailed
+processors:
+  batch/5: null
+receivers:
+  otlp/5:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4350
+service:
+  pipelines:
+    metrics/5:
+      exporters:
+      - debug/5
+      processors:
+      - batch/5
+      receivers:
+      - otlp/5

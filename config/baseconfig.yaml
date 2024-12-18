@@ -1,0 +1,19 @@
+receivers:
+  otlp/5:
+    protocols:
+      http:
+        endpoint:  0.0.0.0:4318
+
+processors:
+  batch/5:
+
+exporters:
+  debug/5:
+    verbosity: detailed
+
+service:
+  pipelines:
+    metrics/5:
+      receivers: [otlp/5]
+      processors: [batch/5]
+      exporters: [debug/5]
